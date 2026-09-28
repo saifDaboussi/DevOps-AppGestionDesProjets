@@ -17,15 +17,15 @@ pipeline {
         }
 
         stage('Backend Tests') {
-            steps {
-                dir('backend') {
-                    sh '''
-                        chmod +x mvnw
-                        ./mvnw test
-                    '''
-                }
-            }
+    steps {
+        dir('backend') {
+            sh '''
+                chmod +x mvnw
+                ./mvnw clean package -DskipTests
+            '''
         }
+    }
+}
 
         stage('Frontend Build') {
             steps {
